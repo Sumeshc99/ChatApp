@@ -8,6 +8,19 @@ const SignUp = () => {
     password: "",
   });
 
+  useEffect(() => {
+    console.log("qqqqqqq");
+    const apiUrl = "http://localhost:3001/login";
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        console.log("aaaaaaaaa", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -17,17 +30,17 @@ const SignUp = () => {
     e.preventDefault();
     console.log("qqq", formData);
 
-    axios
-      .post("http://localhost:3001/signIn", formData)
-      .then((response) => {
-        console.log("111", response);
-        console.log("API Response:", response.data);
-        // Handle successful API response if needed
-      })
-      .catch((error) => {
-        console.error("API Error:", error);
-        // Handle API error if needed
-      });
+    // axios
+    //   .post("http://localhost:3001/login", formData)
+    //   .then((response) => {
+    //     console.log("111", response);
+    //     console.log("API Response:", response.data);
+    //     // Handle successful API response if needed
+    //   })
+    //   .catch((error) => {
+    //     console.error("API Error:", error);
+    //     // Handle API error if needed
+    //   });
   };
 
   return (
